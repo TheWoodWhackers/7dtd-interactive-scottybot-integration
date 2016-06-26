@@ -1,0 +1,1 @@
+# 7dtd-interactive-scottybot-integration
