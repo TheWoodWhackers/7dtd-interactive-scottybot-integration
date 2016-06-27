@@ -8,7 +8,9 @@ _This was created to give streamers a little more control than using the Beam In
 ---
 
 ### CAVEATS
-    NOTE: YOU MUST HAVE A DEDICATED SERVER WITH TELNET ENABLED, THIS WILL NOT CONNECT TO GAME CLIENT!
+    NOTE: YOU MUST HAVE A DEDICATED SERVER WITH ALLOCS SERVER FIXES AND TELNET ENABLED, THIS WILL NOT CONNECT TO GAME CLIENT!
+    
+        Get Allocs Server Fixes - https://7dtd.illy.bz/wiki/Server%20fixes
         
         you should have a serverconfig.xml file with the following lines:
         <property name="TelnetPassword" value="<TELNET_PASSWORD>"/>
