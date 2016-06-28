@@ -214,7 +214,7 @@ def on_open(ws):
 		##                                                   ##
 		##  Credits:                                         ##
 		##                                                   ##
-		##  AtomicYetiGaming -- Python Scripts               ##
+		##  AtomicYetiGaming ----- Python Scripts            ##
 		##                                                   ##
 		##  AtomicYetiGaming_DC -- JS and NodeJS Scripts     ##
 		##                                                   ##
