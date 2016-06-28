@@ -7,6 +7,12 @@ import os
 import random
 import items
 
+row=40
+column=110
+attempts=0
+
+# Set the Terminal window size larger than its default!
+sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=row,cols=column))
 
 # Scottybot auth info
 auth = {
