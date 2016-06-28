@@ -6,12 +6,6 @@
 - [ ] Implement DB
   * (SQLLITE) to save GUI entries and items, enemies, animals...
 
-- [x] ~~Change command from say to sayplayer for certain buttons.~~
-   * ~~Reasoning being you don't want others around you to know you are getting a sniper rifle and to clean up clutter.~~
-
-- [x] ~~Have this not just use beam sparks, intergrate with different bots to their currency~~
- * ~~Possibly remove beam buttons all together and use just chat commands.~~
-
 - [ ] Use the item number instead of name to eliminate any issues wiht the names
  * 2 - zombieferal
  * 3 - zombieBoe
@@ -41,3 +35,9 @@
  * 27 - animalRabbit
  * 28 - animalChicken
  * 29 - animalPig
+
+- [x] ~~Change command from say to sayplayer for certain buttons.~~
+   * ~~Reasoning being you don't want others around you to know you are getting a sniper rifle and to clean up clutter.~~
+
+- [x] ~~Have this not just use beam sparks, intergrate with different bots to their currency~~
+ * ~~Possibly remove beam buttons all together and use just chat commands.~~
