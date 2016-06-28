@@ -27,6 +27,10 @@ server = {
 	'username': '<PLAYER_NAME>'
 }
 
+
+# set to True to debug
+debug = False
+
 # Path to Python Telnet Script - USE "/" as separator even on Windows
 pyscript_path = './telnet.py'
 
@@ -276,7 +280,8 @@ def on_open(ws):
 	thread.start_new_thread(run, ())
 
 if __name__ == "__main__":
-	# websocket.enableTrace(True)
+	if debug:
+		websocket.enableTrace(True)
 	if len(sys.argv) < 2:
 		host = "wss://api.scottybot.net/websocket/control"
 	else:
