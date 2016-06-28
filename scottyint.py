@@ -83,6 +83,7 @@ debuffs = items.items['debuffs']
 zombies = items.items['zombies']
 animals = items.items['animals']
 
+
 def on_message(ws, message):
 	response = json.loads(message)
 	data = []
@@ -101,84 +102,103 @@ def on_message(ws, message):
 
 			# Spawn Animal
 			if data[0] == commands[5]:
-				key = random.randrange(0, len(animals))
-				os.system('python {} {} {} {} 3 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, animals[key][0]))
-				
+				entity(animals)
+
 			# Spawn Tool
 			elif data[0] == commands[1]:
-				key = random.randrange(0, len(tools))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, tools[key][0], tools[key][1]))
+				give(tools)
 				
 			# Spawn Clothes
 			elif data[0] == commands[2]:
-				key = random.randrange(0, len(clothes))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, clothes[key][0], clothes[key][1]))
+				give(clothes)
 				
 			# Spawn Explosive
 			elif data[0] == commands[9]:
-				key = random.randrange(0, len(explosives))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, explosives[key][0], explosives[key][1]))
+				give(explosives)
 				
 			# Spawn Weapon
 			elif data[0] == commands[8]:
-				key = random.randrange(0, len(explosives))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, explosives[key][0], explosives[key][1]))
+				give(weapons)
 				
 			# Spawn Health
 			elif data[0] == commands[3]:
-				key = random.randrange(0, len(health))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, health[key][0], health[key][1]))
+				give(health)
 				
 			# Spawn Food
 			elif data[0] == commands[4]:
-				key = random.randrange(0, len(food))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, food[key][0], food[key][1]))
+				give(food)
 				
 			# Spawn Quest
 			elif data[0] == commands[6]:
-				key = random.randrange(0, len(quests))
-				os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, quests[key][0], quests[key][1]))
+				give(quests)
 				
 			# Spawn Enemy
 			elif data[0] == commands[10]:
-				key = random.randrange(0, len(zombies))
+
 				if num == 73:
-					os.system('python {} {} {} {} 2 spawnwanderinghorde'.format(pyscript_path, server['host'], server['port'], server['password']))
+					entity('spawnwanderinghorde')
 				else:
-					os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, zombies[key][0]))
+					entity(zombies)
 
 			# Spawn Item 
 			elif data[0] == commands[0]:
-				key = random.randrange(0, len(allitems))
 				# **LESS CHANCE OF AIRDROP THAN BEFORE**
 				if num == 73:
-					os.system('python {} {} {} {} 1 spawnairdrop'.format(pyscript_path, server['host'], server['port'], server['password']))
+					give('spawnairdrop')
 				else:
-					os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, allitems[key][0], allitems[key][1]))
+					give(allitems)
 
 			# Spawn Horde
 			elif data[0] == commands[13]:
-				os.system('python {} {} {} {} 2 spawnwanderinghorde'.format(pyscript_path, server['host'], server['port'], server['password']))
+				entity('spawnwanderinghorde')
 
 			# Spawn Feral
 			elif data[0] == commands[11]:
-				os.system('python {} {} {} {} 2 spawnentity {} zombieFeral'.format(pyscript_path, server['host'], server['port'], server['password'], steam))
+				entity('zombieFeral')
 
 			# Spawn Screamer
 			elif data[0] == commands[12]:
-				os.system('python {} {} {} {} 2 spawnentity {} zombieScreamer'.format(pyscript_path, server['host'], server['port'], server['password'], steam))
+				entity('zombieScreamer')
 
 			# Spawn Airdrop
 			elif data[0] == commands[7]:
-				os.system('python {} {} {} {} 1 spawnairdrop'.format(pyscript_path, server['host'], server['port'], server['password']))
+				give('spawnairdrop')
+
+
+def give(enttype):
+	key = random.randrange(0, len(enttype))
+	if enttype == 'spawnairdrop':
+		os.system('python {} {} {} {} 1 spawnairdrop'.format(pyscript_path, server['host'], server['port'], server['password']))
+	else:
+		os.system('python {} {} {} {} 4 give {} {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], steam, enttype[key][0], enttype[key][1]))
+
+
+def entity(enttype):
+	key = random.randrange(0, len(enttype))
+	print(enttype)
+	if enttype == 'zombieFeral' or enttype == 'zombieScreamer':
+		os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype))
+	elif enttype == 'spawnwanderinghorde':
+		os.system('python {} {} {} {} 2 spawnwanderinghorde'.format(pyscript_path, server['host'], server['port'], server['password']))
+	elif enttype == zombies:
+		os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype[key][0]))
+	else:
+		os.system('python {} {} {} {} 3 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype[key][0]))
+
+
+def airdrop():
+	print('airdrop')
+
 
 # if error is thrown
 def on_error(ws, error):
 	print(error)
 
+
 # if connection is closed
 def on_close(ws):
 	print("### closed ###")
+
 
 # open the connection
 def on_open(ws):
