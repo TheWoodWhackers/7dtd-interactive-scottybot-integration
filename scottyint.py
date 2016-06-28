@@ -175,6 +175,7 @@ def give(enttype):
 
 def entity(enttype):
 	key = random.randrange(0, len(enttype))
+	print(enttype)
 	if enttype == 'zombieFeral' or enttype == 'zombieScreamer':
 		os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype))
 	elif enttype == 'spawnwanderinghorde':
@@ -183,10 +184,6 @@ def entity(enttype):
 		os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype[key][0]))
 	else:
 		os.system('python {} {} {} {} 3 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype[key][0]))
-
-
-def airdrop():
-	print('airdrop')
 
 
 # if error is thrown
@@ -202,7 +199,31 @@ def on_close(ws):
 # open the connection
 def on_open(ws):
 	def run(*args):
+		print('''
+		#######################################################
+		##                                                   ##
+		##	Connected to scottybot 7dtd interactive      ##
+		##	to close this application, ctrl + c or       ##
+		##	use the x in the top right corner.           ##
+		##	BE AWARE: WINDOWS has a delay in             ##
+		##	terminating the app                          ##
+		##                                                   ##
+		#######################################################
 
+		#######################################################
+		##                                                   ##
+		##  Credits:                                         ##
+		##                                                   ##
+		##  AtomicYetiGaming -- Python Scripts               ##
+		##                                                   ##
+		##  AtomicYetiGaming_DC -- JS and NodeJS Scripts     ##
+		##                                                   ##
+		##  Bobofett ------------- Ideas, Testing, Support   ##
+		##                                                   ##
+		##  Coder5452 ------------ Headaches and Complaining ##
+		##                                                   ##
+		#######################################################
+		''')
 		# send the auth and sub data
 		ws.send(json.dumps(auth))
 		ws.send(json.dumps(sub))
@@ -215,7 +236,7 @@ def on_open(ws):
 	thread.start_new_thread(run, ())
 
 if __name__ == "__main__":
-	websocket.enableTrace(True)
+	# websocket.enableTrace(True)
 	if len(sys.argv) < 2:
 		host = "wss://api.scottybot.net/websocket/control"
 	else:
