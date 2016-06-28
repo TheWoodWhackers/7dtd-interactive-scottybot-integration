@@ -8,7 +8,7 @@ _This was created to give streamers a little more control than using the Beam In
 ---
 
 ### CAVEATS
-    NOTE: YOU MUST HAVE A DEDICATED SERVER WITH ALLOCS SERVER FIXES AND TELNET ENABLED, 
+    NOTE: YOU MUST HAVE A <b>DEDICATED</b> SERVER WITH <b>ALLOCS SERVER FIXES</b> AND <b>TELNET ENABLED</b> 
     	  THIS WILL NOT CONNECT TO GAME CLIENT!
     
         Get Allocs Server Fixes - https://7dtd.illy.bz/wiki/Server%20fixes
