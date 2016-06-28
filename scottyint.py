@@ -175,7 +175,6 @@ def give(enttype):
 
 def entity(enttype):
 	key = random.randrange(0, len(enttype))
-	print(enttype)
 	if enttype == 'zombieFeral' or enttype == 'zombieScreamer':
 		os.system('python {} {} {} {} 2 spawnentity {} {}'.format(pyscript_path, server['host'], server['port'], server['password'], server['username'], enttype))
 	elif enttype == 'spawnwanderinghorde':
