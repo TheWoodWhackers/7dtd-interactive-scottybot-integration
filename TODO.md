@@ -12,7 +12,7 @@
 - [x] ~~Have this not just use beam sparks, intergrate with different bots to their currency~~
  * ~~Possibly remove beam buttons all together and use just chat commands.~~
 
-- [] Use the item number instead of name to eliminate any issues wiht the names
+- [ ] Use the item number instead of name to eliminate any issues wiht the names
  * 2 - zombieferal
  * 3 - zombieBoe
  * 4 - zombieJoe
