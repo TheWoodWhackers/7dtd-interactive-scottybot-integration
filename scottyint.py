@@ -210,6 +210,49 @@ def on_close(ws):
 def on_open(ws):
 	def run(*args):
 		print('''
+                                                                                                      
+                  ################################################################						
+                  ##                                                            ##
+                  ##                  TO CLOSE THIS APPLICATION:                ##
+                  ##                                                            ##
+                  ##                         ctrl + c                           ##
+                  ##                            or                              ##
+                  ##                 use the x in the upper right               ##
+                  ##                                                            ##
+                  ##                         BE AWARE:                          ##
+                  ##                                                            ##
+                  ##               Windows has a delay when closing             ##
+                  ##                                                            ##
+                  ##                                                            ##
+                  ################################################################
+                  
+                  
+        ''')
+		
+		time.sleep(3)
+		
+		print('''
+						
+                  ################################################################
+                  ##                                                            ##
+                  ##                         Credits:                           ##
+                  ##                                                            ##
+                  ##      AtomicYetiGaming ----- Python Scripts                 ##
+                  ##                                                            ##
+                  ##      AtomicYetiGaming_DC -- JS and NodeJS Scripts          ##
+                  ##                                                            ##
+                  ##      Bobofett ------------- Ideas, Testing, Support        ##
+                  ##                                                            ##
+                  ##      Coder5452 ------------ Headaches and Complaining      ##
+                  ##                                                            ##
+                  ################################################################
+                  
+                  
+		''')
+		
+		time.sleep(3)
+		
+		print('''
 		                                                                                                      
   @@@@@@@@     @@@@@@@    @@@@@@   @@@ @@@   @@@@@@      @@@@@@@   @@@@@@      @@@@@@@   @@@  @@@@@@@@  
   @@@@@@@@     @@@@@@@@  @@@@@@@@  @@@ @@@  @@@@@@@      @@@@@@@  @@@@@@@@     @@@@@@@@  @@@  @@@@@@@@  
@@ -235,39 +278,9 @@ def on_open(ws):
      :    ::    :      :     : :: ::    :   : :   :   : :   :: :: :     :     :       :      : :: ::  
    ''')
    
-		time.sleep(3)
 		
-		print('''
-                                                                                                      
-                  ################################################################						
-                  ##                                                            ##
-                  ##                  TO CLOSE THIS APPLICATION:                ##
-                  ##                                                            ##
-                  ##                         ctrl + c                           ##
-                  ##                            or                              ##
-                  ##                 use the x in the upper right               ##
-                  ##                                                            ##
-                  ##                         BE AWARE:                          ##
-                  ##                                                            ##
-                  ##               Windows has a delay when closing             ##
-                  ##                                                            ##
-                  ##                                                            ##
-                  ################################################################
-						
-                  ################################################################
-                  ##                                                            ##
-                  ##                         Credits:                           ##
-                  ##                                                            ##
-                  ##      AtomicYetiGaming ----- Python Scripts                 ##
-                  ##                                                            ##
-                  ##      AtomicYetiGaming_DC -- JS and NodeJS Scripts          ##
-                  ##                                                            ##
-                  ##      Bobofett ------------- Ideas, Testing, Support        ##
-                  ##                                                            ##
-                  ##      Coder5452 ------------ Headaches and Complaining      ##
-                  ##                                                            ##
-                  ################################################################
-		''')
+		
+		
 		# send the auth and sub data
 		ws.send(json.dumps(auth))
 		ws.send(json.dumps(sub))
@@ -282,6 +295,7 @@ def on_open(ws):
 if __name__ == "__main__":
 	if debug:
 		websocket.enableTrace(True)
+	
 	if len(sys.argv) < 2:
 		host = "wss://api.scottybot.net/websocket/control"
 	else:
