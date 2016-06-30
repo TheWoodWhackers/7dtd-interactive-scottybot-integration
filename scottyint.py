@@ -231,11 +231,6 @@ def on_open(ws):
 				
 		cursor.execute("SELECT count(*) FROM info")
 		info = cursor.fetchone()[0]
-		
-		parser = argparse.ArgumentParser()
-		
-		parser.add_argument("-creds", "--creds", dest = "creds", help="re-enter yout creds")
-		args = parser.parse_args()
 			
 		if info == 0:
 			print('''
