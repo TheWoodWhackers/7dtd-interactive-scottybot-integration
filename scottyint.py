@@ -6,8 +6,9 @@ import json
 import os
 import random
 import items
+import sqlite3
 
-row=40
+row=25
 column=110
 attempts=0
 
@@ -209,6 +210,58 @@ def on_close(ws):
 # open the connection
 def on_open(ws):
 	def run(*args):
+		conn = sqlite3.connect("interactive.sqlite")
+		cursor = conn.cursor()
+		cursor.execute("""CREATE TABLE IF NOT EXISTS info(
+							auth text NOT NULL, 
+							host text NOT NULL, 
+							port text NOT NULL, 
+							pass text NOT NULL,
+							name text NOT NULL, 
+							first integer)
+						""")
+		def create_db():
+			with conn:
+				cursor.execute('INSERT INTO info VALUES (?,?,?,?,?,?);', (authCode, telnetHost, telnetPort, telnetPass, gameName, 0))
+				conn.commit()
+				
+				cursor.execute("SELECT * FROM info")
+				infoList = cursor.fetchall()
+				print("infoList - ", infoList, "\n")			
+				
+		cursor.execute("SELECT count(*) FROM info")
+		info = cursor.fetchone()[0]
+		
+		parser = argparse.ArgumentParser()
+		
+		parser.add_argument("-creds", "--creds", dest = "creds", help="re-enter yout creds")
+		args = parser.parse_args()
+			
+		if info == 0:
+			print('''
+                                                                                                      
+                  ################################################################						
+                  ##                                                            ##
+                  ##                WELCOME TO 7DTD INTERACTIVE:                ##
+                  ##                                                            ##
+                  ##             THIS APPEARS TO BE YOUR FIRST RUN              ##
+                  ##                                                            ##
+                  ##         ENTER YOUR INFO INTO THE FOLLOWING PROMPTS         ##
+                  ##                                                            ##
+                  ################################################################
+                  
+                  
+        ''')
+			time.sleep(3)
+				
+			authCode = input("Scotty Bot Auth Code: ")
+			telnetHost = input("Enter 7DTD Telnet Host: ")
+			telnetPort = input("Enter Telnet Server Port: ")
+			telnetPass = input("Enter Telnet Password: ")
+			gameName = input("Enter 7DTD Player Name: ")		
+			create_db()
+			
+                    
 		print('''
                                                                                                       
                   ################################################################						
@@ -277,10 +330,7 @@ def on_open(ws):
       ::   ::   ::     ::     :: ::::  ::   :::  ::   :::   ::: :::     ::     ::    ::::     :: ::::   
      :    ::    :      :     : :: ::    :   : :   :   : :   :: :: :     :     :       :      : :: ::  
    ''')
-   
-		
-		
-		
+   	
 		# send the auth and sub data
 		ws.send(json.dumps(auth))
 		ws.send(json.dumps(sub))
