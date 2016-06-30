@@ -223,16 +223,13 @@ def on_open(ws):
 		def create_db():
 			with conn:
 				cursor.execute('INSERT INTO info VALUES (?,?,?,?,?,?);', (authCode, telnetHost, telnetPort, telnetPass, gameName, 0))
-				conn.commit()
-				
-				cursor.execute("SELECT * FROM info")
-				infoList = cursor.fetchall()
-				print("infoList - ", infoList, "\n")			
+				conn.commit()			
 				
 		cursor.execute("SELECT count(*) FROM info")
 		info = cursor.fetchone()[0]
+		
 			
-		if info == 0:
+		if info == 0:			
 			print('''
                                                                                                       
                   ################################################################						
@@ -256,7 +253,11 @@ def on_open(ws):
 			gameName = input("Enter 7DTD Player Name: ")		
 			create_db()
 			
-                    
+        
+		cursor.execute("SELECT * FROM info")
+		infoList = cursor.fetchall()
+		print("infoList - ", infoList, "\n")            
+		
 		print('''
                                                                                                       
                   ################################################################						
@@ -352,3 +353,4 @@ if __name__ == "__main__":
 	ws.on_open = on_open
 
 	ws.run_forever()
+
