@@ -42,9 +42,12 @@ _To close out the interactive ctrl + c or hit the x int the right hand cornor of
 
 ---
 
-_If you get module errors when trying to run_
+_Module errors should now be a thing of the past with the new setup.py script_
+_PLEASE TELL ME OTHER WISE AND I WILL FIX_
 
-~~5. Open cmd(windows) or terminal(linux/unix)
+~~_If you get module errors when trying to run_
+
+5. Open cmd(windows) or terminal(linux/unix)
 	* Install websocket module
 		* pip3 install websocket _(windows)_ _(If if it warns about pip being outdated update it)_
 		* sudo pip3 install websocket-client _(linux/unix)_
