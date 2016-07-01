@@ -3,7 +3,7 @@
 - [ ] Implement GUI
   * (tkinter or pyQt) for entering credentials and starting the interactive app.
 
-- [ ] Use the item number instead of name to eliminate any issues wiht the names
+- [ ] Use the item number instead of name to eliminate any issues with the names
  * 2 - zombieferal
  * 3 - zombieBoe
  * 4 - zombieJoe
