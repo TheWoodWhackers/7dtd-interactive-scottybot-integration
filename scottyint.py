@@ -282,6 +282,11 @@ if __name__ == "__main__":
 		host = "wss://api.scottybot.net/websocket/control"
 	else:
 		host = sys.argv[1]
+	
+	if sys.argv[1] == "creds":
+		print(sys.argv)
+		os.remove('interactive.sqlite')
+		
 	ws = websocket.WebSocketApp(host,
 					on_message=on_message,
 					on_error=on_error,
