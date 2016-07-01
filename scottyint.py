@@ -7,6 +7,7 @@ import os
 import random
 import items
 import sqlite3
+import re
 
 # set to True to debug
 debug = False
@@ -323,10 +324,40 @@ if __name__ == "__main__":
 		time.sleep(3)
 
 		authCode = input("Scotty Bot Auth Code: ")
+		reg = re.match("([a-zA-Z0-9_-]){0,8}-([a-zA-Z0-9_-]){0,4}-([a-zA-Z0-9_-]){0,4}-([a-zA-Z0-9_-]){0,4}-([a-zA-Z0-9_-]){0,12}", authCode)
+		while not reg:
+			print('YOU MUST ENTER YOUR SCOTTY BOT AUTHCODE TO CONTINUE')
+			print('\n')
+			authCode = input("Scotty Bot Auth Code: ")
+
 		telnetHost = input("Enter 7DTD Telnet Host: ")
-		telnetPort = input("Enter Telnet Server Port: ")
+		while telnetHost == '':
+			print('YOU MUST ENTER YOUR TELNET HOST TO CONTINUE')
+			print('\n')
+			telnetHost = input("Enter 7DTD Telnet Host: ")
+
+		# telnetPort = int(input("Enter Telnet Server Port: "))
+		while True:
+			try:
+				telnetPort = int(input("Enter Telnet Server Port: "))
+			except ValueError:
+				print('THAT IS NOT A PORT NUMBER')
+				print('\n')
+			else:
+				break
+
 		telnetPass = input("Enter Telnet Password: ")
+		while telnetPass == '':
+			print('YOU MUST ENTER YOUR TELNET PASSWORD TO CONTINUE')
+			print('\n')
+			telnetPass = input("Enter Telnet Password: ")
+
 		gameName = input("Enter 7DTD Player Name: ")
+		while gameName == '':
+			print('YOU MUST ENTER YOUR 7DTD IN-GAME CHARACTER NAME TO CONTINUE')
+			print('\n')
+			gameName = input("Enter 7DTD Player Name: ")
+
 		create_db()
 
 	cursor.execute("SELECT * FROM info")
