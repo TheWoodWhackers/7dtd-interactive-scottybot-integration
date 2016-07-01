@@ -1,7 +1,7 @@
 #List of Things to do:
 
 - [ ] Implement GUI
-  * (tkinter) for entering credentials and starting the interactive app.
+  * (tkinter or pyQt) for entering credentials and starting the interactive app.
 
 - [ ] Use the item number instead of name to eliminate any issues wiht the names
  * 2 - zombieferal
@@ -39,5 +39,5 @@
 - [x] ~~Have this not just use beam sparks, intergrate with different bots to their currency~~
  * ~~Possibly remove beam buttons all together and use just chat commands.~~
  
-- [x] ~~Implement DB
-  * (SQLLITE) to save GUI entries and items, enemies, animals...~~
+- [x] ~~Implement DB~~
+  * ~~(SQLLITE) to save GUI entries and items, enemies, animals...~~
