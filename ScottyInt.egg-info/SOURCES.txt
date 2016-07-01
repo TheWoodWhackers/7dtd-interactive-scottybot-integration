@@ -1,0 +1,7 @@
+README.txt
+setup.py
+ScottyInt.egg-info/PKG-INFO
+ScottyInt.egg-info/SOURCES.txt
+ScottyInt.egg-info/dependency_links.txt
+ScottyInt.egg-info/requires.txt
+ScottyInt.egg-info/top_level.txt
