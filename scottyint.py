@@ -278,14 +278,16 @@ if __name__ == "__main__":
 	if debug:
 		websocket.enableTrace(True)
 
-	if len(sys.argv) < 2:
-		host = "wss://api.scottybot.net/websocket/control"
-	else:
-		host = sys.argv[1]
+	host = "wss://api.scottybot.net/websocket/control"
 	
-	if sys.argv[1] == "creds":
-		print(sys.argv)
-		os.remove('interactive.sqlite')
+	if len(sys.argv) == 2:
+		if sys.argv[1] == "creds":
+			if debug:
+				print(sys.argv)
+			os.remove('interactive.sqlite')
+	elif len(sys.argv) > 2:
+		print('You have entered too many args')
+
 		
 	ws = websocket.WebSocketApp(host,
 					on_message=on_message,
@@ -394,5 +396,7 @@ if __name__ == "__main__":
 
 	ws.on_open = on_open
 
-	ws.run_forever()
-
+	try:
+		ws.run_forever()
+	except Keyboardinterrupt:
+		ws.closw()
