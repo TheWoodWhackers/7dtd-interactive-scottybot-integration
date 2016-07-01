@@ -186,14 +186,16 @@ def on_error(ws, error):
 
 # if connection is closed
 def on_close(ws):
-	print("### closed ###")
+	print('''
+                                 ### 7DTD Interactive now closed ###
+          ''')
 
 
 # open the connection
 def on_open(ws):
 	def run(*args):
 		# Scottybot auth info
-
+		print(os.getpid())
 		print('''
 
                   ################################################################
@@ -398,5 +400,11 @@ if __name__ == "__main__":
 
 	try:
 		ws.run_forever()
-	except Keyboardinterrupt:
-		ws.closw()
+	except KeyboardInterrupt:
+		print('''                       
+                                              GOOD BYE!!
+		                                                            
+                                You can now close this terminal window...
+              ''')
+		ws.close()
+		
