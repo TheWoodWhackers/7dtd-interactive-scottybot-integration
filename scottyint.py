@@ -186,14 +186,16 @@ def on_error(ws, error):
 
 # if connection is closed
 def on_close(ws):
-	print("### closed ###")
+	print('''
+                                 ### 7DTD Interactive now closed ###
+          ''')
 
 
 # open the connection
 def on_open(ws):
 	def run(*args):
 		# Scottybot auth info
-
+		print(os.getpid())
 		print('''
 
                   ################################################################
@@ -278,10 +280,17 @@ if __name__ == "__main__":
 	if debug:
 		websocket.enableTrace(True)
 
-	if len(sys.argv) < 2:
-		host = "wss://api.scottybot.net/websocket/control"
-	else:
-		host = sys.argv[1]
+	host = "wss://api.scottybot.net/websocket/control"
+	
+	if len(sys.argv) == 2:
+		if sys.argv[1] == "creds":
+			if debug:
+				print(sys.argv)
+			os.remove('interactive.sqlite')
+	elif len(sys.argv) > 2:
+		print('You have entered too many args')
+
+		
 	ws = websocket.WebSocketApp(host,
 					on_message=on_message,
 					on_error=on_error,
@@ -389,5 +398,13 @@ if __name__ == "__main__":
 
 	ws.on_open = on_open
 
-	ws.run_forever()
-
+	try:
+		ws.run_forever()
+	except KeyboardInterrupt:
+		print('''                       
+                                              GOOD BYE!!
+		                                                            
+                                You can now close this terminal window...
+              ''')
+		ws.close()
+		
